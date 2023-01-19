@@ -1,16 +1,16 @@
-package com.example.facts_android_f95565.ui.home;
+package com.example.facts_android_f95565.ui.facts;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class FactsViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public FactsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is facts fragment");
     }
 
     public LiveData<String> getText() {
