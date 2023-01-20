@@ -4,16 +4,23 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+
 public class FactsViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private MutableLiveData<String> mFacts;
+    private FactsAdapter factsAdapter;
 
     public FactsViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is facts fragment");
+        mFacts = new MutableLiveData<>();
+        factsAdapter = new FactsAdapter(new ArrayList<String>());
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<String> getFacts() {
+        return mFacts;
+    }
+
+    public void loadFacts() {
+        new GetFactsTask(factsAdapter).execute();
     }
 }

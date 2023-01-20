@@ -4,34 +4,41 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.facts_android_f95565.databinding.FragmentFactsBinding;
+import com.example.facts_android_f95565.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FactsFragment extends Fragment {
 
-    private FragmentFactsBinding binding;
+    private List<String> facts;
+    private FactsAdapter factsAdapter;
+    private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        FactsViewModel factsViewModel =
-                new ViewModelProvider(this).get(FactsViewModel.class);
+        View view = inflater.inflate(R.layout.fragment_facts, container, false);
 
-        binding = FragmentFactsBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        // Initialize the recycler view
+        recyclerView = view.findViewById(R.id.facts_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        final TextView textView = binding.textFacts;
-        factsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
-    }
+        // Initialize the facts list and adapter
+        facts = new ArrayList<>();
+        factsAdapter = new FactsAdapter(facts);
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+        // Set the adapter on the recycler view
+        recyclerView.setAdapter(factsAdapter);
+
+        // Execute the async task
+        new GetFactsTask(factsAdapter).execute();
+
+        return view;
     }
 }
