@@ -3,6 +3,8 @@ package com.example.facts_android_f95565.ui.favorites;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.facts_android_f95565.DatabaseHelper;
 
@@ -14,11 +16,14 @@ public class GetFavoritesTask extends AsyncTask<Void, Void, List<String>> {
     private DatabaseHelper dbHelper;
     private FavoritesAdapter favoritesAdapter;
     private String currentUsername;
+    private TextView noFavoritedText;
+    List<String> favoriteFacts;
 
-    public GetFavoritesTask(DatabaseHelper db, FavoritesAdapter adapter, String username) {
+    public GetFavoritesTask(DatabaseHelper db, FavoritesAdapter adapter, String username, TextView noFavText) {
         favoritesAdapter = adapter;
         currentUsername = username;
         dbHelper = db;
+        noFavoritedText = noFavText;
     }
 
     @Override
@@ -27,7 +32,7 @@ public class GetFavoritesTask extends AsyncTask<Void, Void, List<String>> {
 
         Cursor cursor = db.query("facts", new String[]{"fact"}, "username=?", new String[]{currentUsername}, null, null, null);
 
-        List<String> favoriteFacts = new ArrayList<>();
+        favoriteFacts = new ArrayList<>();
         while (cursor.moveToNext()) {
             int index = cursor.getColumnIndex("fact");
             if (index != -1) {
@@ -45,6 +50,13 @@ public class GetFavoritesTask extends AsyncTask<Void, Void, List<String>> {
     @Override
     protected void onPostExecute(List<String> facts) {
         super.onPostExecute(facts);
-        favoritesAdapter.setData(facts);
+
+        if (favoriteFacts.size() == 0) {
+            noFavoritedText.setVisibility(View.VISIBLE);
+        }
+        else {
+            noFavoritedText.setVisibility(View.GONE);
+            favoritesAdapter.setData(facts);
+        }
     }
 }

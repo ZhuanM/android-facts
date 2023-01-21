@@ -28,6 +28,7 @@ public class FavoritesFragment extends Fragment {
     private RecyclerView recyclerView;
     private FavoritesAdapter favoritesAdapter;
     private List<String> favoriteFacts;
+    private TextView noFavoritedText;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,13 +45,16 @@ public class FavoritesFragment extends Fragment {
         // Set the adapter on the recycler view
         recyclerView.setAdapter(favoritesAdapter);
 
+        // Get the "No favorited facts" text
+        noFavoritedText = view.findViewById(R.id.empty_favorites_text);
+
         // Get the current username from SharedPreferences
         SharedPreferences sharedPreferences = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         final String currentUsername = sharedPreferences.getString("username", "");
 
         // Get user's favorite facts
         DatabaseHelper dbHelper = new DatabaseHelper(getActivity());
-        GetFavoritesTask getFavoritesTask = new GetFavoritesTask(dbHelper, favoritesAdapter, currentUsername);
+        GetFavoritesTask getFavoritesTask = new GetFavoritesTask(dbHelper, favoritesAdapter, currentUsername, noFavoritedText);
         getFavoritesTask.execute();
 
         return view;
