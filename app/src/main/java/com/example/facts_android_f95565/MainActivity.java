@@ -16,7 +16,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.facts_android_f95565.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
     private ActivityMainBinding binding;
 
     @Override

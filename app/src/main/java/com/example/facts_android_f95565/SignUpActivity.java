@@ -2,7 +2,9 @@ package com.example.facts_android_f95565;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -51,6 +53,16 @@ public class SignUpActivity extends AppCompatActivity {
                         Boolean successfulRegister = db.registerUser(user, pass);
                         if (successfulRegister) {
                             Toast.makeText(SignUpActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
+
+                            // SharedPreferences as a method is better than passing the username to multiple constructors,
+                            // because if the user leaves the app and returns after
+                            // he has already logged in -> we would lose his current username information
+
+                            // Save the current username to SharedPreferences
+                            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("username", user);
+                            editor.apply();
 
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);

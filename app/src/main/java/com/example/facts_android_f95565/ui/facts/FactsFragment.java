@@ -31,7 +31,7 @@ public class FactsFragment extends Fragment {
 
         // Initialize the facts list and adapter
         facts = new ArrayList<>();
-        factsAdapter = new FactsAdapter(facts);
+        factsAdapter = new FactsAdapter(facts, view.getContext());
 
         // Set the adapter on the recycler view
         recyclerView.setAdapter(factsAdapter);

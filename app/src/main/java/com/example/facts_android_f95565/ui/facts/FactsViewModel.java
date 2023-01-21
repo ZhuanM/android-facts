@@ -13,7 +13,7 @@ public class FactsViewModel extends ViewModel {
 
     public FactsViewModel() {
         mFacts = new MutableLiveData<>();
-        factsAdapter = new FactsAdapter(new ArrayList<String>());
+        factsAdapter = new FactsAdapter(new ArrayList<String>(), null);
     }
 
     public LiveData<String> getFacts() {

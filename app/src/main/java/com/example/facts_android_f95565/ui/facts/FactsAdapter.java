@@ -1,5 +1,6 @@
 package com.example.facts_android_f95565.ui.facts;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +14,18 @@ import java.util.List;
 
 public class FactsAdapter extends RecyclerView.Adapter<FactsViewHolder> {
     private List<String> facts;
+    private Context parentContext;
 
-    public FactsAdapter(List<String> facts) {
-        this.facts = facts;
+    public FactsAdapter(List<String> listOfFacts, Context context) {
+        facts = listOfFacts;
+        parentContext = context;
     }
 
     @NonNull
     @Override
     public FactsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.facts_list_item, parent, false);
-        return new FactsViewHolder(view);
+        return new FactsViewHolder(view, facts, parentContext);
     }
 
     @Override
