@@ -1,66 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!--ScrollView is added so we can successufully scroll while horizontally looking at the app -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
-    android:orientation="vertical"
-    android:background="@color/custom_dark"
-    tools:context=".SignUpActivity">
+    android:fillViewport="true">
 
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        android:gravity="center_horizontal"
-        android:text="Register"
-        android:textColor="@color/custom_purple"
-        android:textSize="50dp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:background="@color/custom_dark"
+        tools:context=".SignUpActivity">
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:background="@drawable/custominputbackground"
-        android:hint="Your username"
-        android:textColor="@color/custom_purple"
-        android:textColorHint="@color/custom_purple"
-        android:textSize="23dp"
-        android:layout_marginBottom="30dp"
-        android:paddingLeft="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center_horizontal"
+            android:text="Register"
+            android:textColor="@color/custom_purple"
+            android:textSize="50dp"
+            android:textStyle="bold"/>
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:background="@drawable/custominputbackground"
-        android:hint="Your password"
-        android:textColor="@color/custom_purple"
-        android:textColorHint="@color/custom_purple"
-        android:textSize="23dp"
-        android:layout_marginBottom="30dp"
-        android:paddingLeft="20dp"/>
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@drawable/custominputbackground"
+            android:hint="Your username"
+            android:textColor="@color/custom_purple"
+            android:textColorHint="@color/custom_purple"
+            android:textSize="23dp"
+            android:layout_marginBottom="30dp"
+            android:paddingLeft="20dp"/>
 
-    <Button
-        android:id="@+id/register"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/custom_purple"
-        android:text="Create account"
-        android:textSize="20dp" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@drawable/custominputbackground"
+            android:hint="Your password"
+            android:textColor="@color/custom_purple"
+            android:textColorHint="@color/custom_purple"
+            android:textSize="23dp"
+            android:layout_marginBottom="30dp"
+            android:paddingLeft="20dp"/>
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/custom_purple"
-        android:text="Login"
-        android:textSize="20dp" />
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/custom_purple"
+            android:text="Create account"
+            android:textSize="20dp"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="@color/custom_purple"
+            android:text="Login"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+</ScrollView>

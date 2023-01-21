@@ -37,14 +37,14 @@ public class SignUpActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
 
-                if (TextUtils.isEmpty(user)) {
+                if (TextUtils.isEmpty(user) && TextUtils.isEmpty(pass)) {
+                    Toast.makeText(SignUpActivity.this, "Please enter the fields!", Toast.LENGTH_SHORT).show();
+                }
+                else if (TextUtils.isEmpty(user)) {
                     Toast.makeText(SignUpActivity.this, "Please enter your username!", Toast.LENGTH_SHORT).show();
                 }
                 else if (TextUtils.isEmpty(pass)) {
                     Toast.makeText(SignUpActivity.this, "Please enter your password!", Toast.LENGTH_SHORT).show();
-                }
-                else if (TextUtils.isEmpty(user) && TextUtils.isEmpty(pass)) {
-                    Toast.makeText(SignUpActivity.this, "Please enter the fields!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     // Successful params

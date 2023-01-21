@@ -37,14 +37,14 @@ public class LoginActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
 
-                if (TextUtils.isEmpty(user)) {
+                if (TextUtils.isEmpty(user) && TextUtils.isEmpty(pass)) {
+                    Toast.makeText(LoginActivity.this, "Please enter the fields!", Toast.LENGTH_SHORT).show();
+                }
+                else if (TextUtils.isEmpty(user)) {
                     Toast.makeText(LoginActivity.this, "Please enter your username!", Toast.LENGTH_SHORT).show();
                 }
                 else if (TextUtils.isEmpty(pass)) {
                     Toast.makeText(LoginActivity.this, "Please enter your password!", Toast.LENGTH_SHORT).show();
-                }
-                else if (TextUtils.isEmpty(user) && TextUtils.isEmpty(pass)) {
-                    Toast.makeText(LoginActivity.this, "Please enter the fields!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     // Successful params
