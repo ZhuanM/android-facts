@@ -37,7 +37,8 @@ public class FactsFragment extends Fragment {
         recyclerView.setAdapter(factsAdapter);
 
         // Execute the async task
-        new GetFactsTask(factsAdapter).execute();
+        GetFactsTask getFactsTask = new GetFactsTask(factsAdapter);
+        getFactsTask.execute();
 
         return view;
     }
