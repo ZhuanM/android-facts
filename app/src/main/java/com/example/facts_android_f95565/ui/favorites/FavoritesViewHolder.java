@@ -47,8 +47,4 @@ public class FavoritesViewHolder extends RecyclerView.ViewHolder {
     public void bind(String fact) {
         factTextView.setText(fact);
     }
-
-    public ImageView getHeartIcon() {
-        return heartIcon;
-    }
 }

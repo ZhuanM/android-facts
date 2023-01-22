@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,9 +46,5 @@ public class FactsViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(String fact) {
         factTextView.setText(fact);
-    }
-
-    public ImageView getHeartIcon() {
-        return heartIcon;
     }
 }
