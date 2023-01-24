@@ -19,6 +19,8 @@ import javax.net.ssl.HttpsURLConnection;
 public class GetFactsTask extends AsyncTask<Void, Void, String> {
 
     private static final String FACTS_API_URL = "https://api.api-ninjas.com/v1/facts?limit=20";
+
+    // TODO I changed the API Key for security reasons - go to https://api-ninjas.com/profile to get the new key if needed
     private static final String API_KEY = "cPwnau70jlox/Soi5BRCPg==GvAg949KibL6YJFY";
 
     private FactsAdapter factsAdapter;
